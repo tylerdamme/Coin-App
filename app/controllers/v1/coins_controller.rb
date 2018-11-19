@@ -1,7 +1,8 @@
 class V1::CoinsController < ApplicationController
   def index
     coins = Coin.all
-    render json: coins.as_json
+    @total = Coin.total_value(coins)
+    render json: {total_value: @total, coins: coins.as_json}
   end
 
   def create
