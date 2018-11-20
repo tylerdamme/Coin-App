@@ -2,6 +2,7 @@ class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :coin
   validate :valid_withdrawal
+  validate :low_coin
 
   def as_json
     {
@@ -11,8 +12,17 @@ class Transaction < ApplicationRecord
     }
   end
 
+  def low_coin
+    if withdrawal && coin.balance <= 4
+      # puts coin.balance
+      # puts user.id
+      # puts Coin.total_value(Coin.all)
+      UserNotifierMailer.low_coin_email(user.id, coin.balance, Coin.total_value(Coin.all)).deliver
+    end
+  end
+
   def valid_withdrawal
-    # puts "~~~~~~~~ #{coin.balance}"
+    puts "~~~~~~~~ #{coin.balance}"
 
     # if withdrawal && coin.balance <= 4
     #   #email the admin
