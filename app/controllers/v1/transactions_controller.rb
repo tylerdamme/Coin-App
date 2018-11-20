@@ -2,15 +2,12 @@ class V1::TransactionsController < ApplicationController
 before_action :valid_request?
 
   def create
-    transaction_type = params[:type]
-    coin = Coin.find(params[:coin_id])
-
-    balance = coin.balance
+    is_withdrawal = !!params[:withdrawal]
  
     transaction = Transaction.new(
       user_id: User.get_user(api_key).id,
       coin_id: params["coin_id"],
-      withdrawal: transaction_type == 'withdrawal'
+      withdrawal: is_withdrawal
       )
     if transaction.save
       render json: transaction.as_json

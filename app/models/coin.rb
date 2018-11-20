@@ -8,8 +8,8 @@ class Coin < ApplicationRecord
   end
 
   def balance
-    deposits = transactions.where(type: 'deposit')
-    withdrawals = transactions.where(type: 'withdrawal')
+    deposits = transactions.where(withdrawal: false).count
+    withdrawals = transactions.where(withdrawal: true).count
     deposits - withdrawals
   end
 end
