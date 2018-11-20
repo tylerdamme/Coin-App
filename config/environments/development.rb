@@ -29,6 +29,16 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  ActionMailer::Base.smtp_settings = {
+  :user_name => ENV['Sendgrid_User'],
+  :password => ENV['Sendgrid_password'],
+  :domain => 'localhost:3000',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
