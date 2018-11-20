@@ -9,6 +9,7 @@ before_action :valid_request?
       coin_id: params["coin_id"],
       withdrawal: is_withdrawal
       )
+
     if transaction.save
       render json: transaction.as_json
     else

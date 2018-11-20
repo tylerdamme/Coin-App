@@ -12,6 +12,12 @@ class Transaction < ApplicationRecord
   end
 
   def valid_withdrawal
+    # puts "~~~~~~~~ #{coin.balance}"
+
+    # if withdrawal && coin.balance <= 4
+    #   #email the admin
+    # end
+
     if withdrawal && coin.balance <= 0
       errors.add(:withdrawal, "Invalid withdrawal, no coins left")
     end
