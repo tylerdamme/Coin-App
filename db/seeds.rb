@@ -6,5 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Coin.create(name: "First Coin", value: 1)
-Coin.create(name: "Super Coin", value: 5)
+# Coin.create(name: "First Coin", value: 1)
+# Coin.create(name: "Super Coin", value: 5)
+

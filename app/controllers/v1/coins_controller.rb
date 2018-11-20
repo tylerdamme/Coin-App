@@ -1,4 +1,6 @@
 class V1::CoinsController < ApplicationController
+  before_action :valid_request?
+  
   def index
     coins = Coin.all
     @total = Coin.total_value(coins)
