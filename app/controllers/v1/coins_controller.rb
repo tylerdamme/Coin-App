@@ -12,8 +12,11 @@ class V1::CoinsController < ApplicationController
       name: params[:name],
       value: params[:value]
       )
-    coin.save
-    render json: coin.as_json
+    if coin.save
+      render json: coin.as_json
+    else
+      render json: {errors: coin.errors}
+    end
   end
 
   def show
@@ -25,8 +28,11 @@ class V1::CoinsController < ApplicationController
     coin = Coin.find_by(id: params[:id])
     coin.name = params[:name] || coin.name
     coin.value = params[:value] || coin.value
-    coin.save
-    render json: coin.as_json
+    if coin.save
+      render json: coin.as_json
+    else
+      render json: {error: coin.errors}
+    end
   end
 
   def destroy

@@ -13,7 +13,7 @@ class Transaction < ApplicationRecord
   end
 
   def low_coin
-    if withdrawal && coin.balance <= 4
+    if withdrawal == true && coin.balance <= 4
       puts coin.name
       # puts coin.balance
       # puts user.id
