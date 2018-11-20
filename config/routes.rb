@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     get "/transactions" => "transactions#index"
     post "/transactions" => "transactions#create"
     get "/transactions/:id" => "transactions#show"
+    post "/users" => "users#create"
+
   end
 end
