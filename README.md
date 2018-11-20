@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MortgageHippo coding challenge app: The Coin Machine
 
-Things you may want to cover:
+This app uses:
 
-* Ruby version
+* 'rails, 5.1.6'
 
-* System dependencies
+* 'figaro' for protecting environment variables
 
-* Configuration
+* 'sendgrid-ruby' for mailing admins when a coin count it low
 
-* Database creation
+* postgresql
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A walk-through video is available upon request.
