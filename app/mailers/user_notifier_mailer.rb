@@ -2,10 +2,11 @@ class UserNotifierMailer < ApplicationMailer
   default :from => 'any_from_address@email.com'
 
   # send a low coin email to the user, pass in the user object that   contains the user's email address
-  def low_coin_email(user_id, coin_balance, total_value)
+  def notify_admin(user, coin_balance,  coin_name, total_value)
     @user = user
-    balance
-    coin.total_value
+    @coin_bal = coin_balance
+    @total = total_value
+    @name = coin_name
 
     mail( :to => @user.email,
     :subject => 'A coin is running low!' )

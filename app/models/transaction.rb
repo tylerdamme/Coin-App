@@ -14,19 +14,16 @@ class Transaction < ApplicationRecord
 
   def low_coin
     if withdrawal && coin.balance <= 4
+      puts coin.name
       # puts coin.balance
       # puts user.id
       # puts Coin.total_value(Coin.all)
-      UserNotifierMailer.low_coin_email(user.id, coin.balance, Coin.total_value(Coin.all)).deliver
+      UserNotifierMailer.notify_admin(user, coin.balance, coin.name, Coin.total_value(Coin.all)).deliver
     end
   end
 
   def valid_withdrawal
     puts "~~~~~~~~ #{coin.balance}"
-
-    # if withdrawal && coin.balance <= 4
-    #   #email the admin
-    # end
 
     if withdrawal && coin.balance <= 0
       errors.add(:withdrawal, "Invalid withdrawal, no coins left")
