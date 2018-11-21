@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-    root "v1/coins#index"
   namespace :v1 do
     get "/coins" => "coins#index"
     post "/coins" => "coins#create"
